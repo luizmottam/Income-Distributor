@@ -8,17 +8,17 @@ public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        System.out.println("==========MENU======== ");
-        System.out.println("1 - Basic Planning");
-        System.out.println("2 - Debit Planning");
-
         while (true) {
-            System.out.print("Escolha: ");
+            exibirMenu();
             int escolha = input.nextInt();
 
             switch (escolha) {
-                case 1: realizarPlanejamentoBasico();
-                case 2: realizarPlanejamentoDebito(input);
+                case 1:
+                    realizarPlanejamentoBasico();
+                    break;
+                case 2:
+                    realizarPlanejamentoDebito(input);
+                    break;
                 default:
                     System.out.println("Opção inválida. Por favor, escolha novamente.");
 
@@ -26,6 +26,12 @@ public class Main {
         }
     }
 
+    private static void exibirMenu() {
+        System.out.println("==========MENU======== ");
+        System.out.println("1 - Basic Planning");
+        System.out.println("2 - Debit Planning");
+        System.out.print("Escolha: ");
+    }
     private static void realizarPlanejamentoBasico() {
         BasicPlanning planning = new BasicPlanning();
         configurarPlano(planning);

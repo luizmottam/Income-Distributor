@@ -18,6 +18,5 @@ public class DebitPlanning  extends BasicPlanning {
         System.out.printf("Reserva de Emergência: R$%.2f\n", reserve);
         System.out.printf("Investimentos: R$%.2f\n", investiment);
         System.out.printf("Desejos: R$%.2f\n", expense);
-
     }
 }

@@ -9,13 +9,25 @@ public class BasicPlanning {
 
 
     public void setPercentExpenses(float percentExpenses) {
-        this.percentExpenses = percentExpenses;
+        if (percentExpenses >= 0.0F) {
+            this.percentExpenses = percentExpenses;
+        } else {
+            System.out.println("Coloque um valor positivo para a porcentagem de despesas");
+        }
     }
     public void setPercentInvestment(float percentInvestment) {
-        this.percentInvestment = percentInvestment;
+        if (percentInvestment >= 0.0F) {
+            this.percentInvestment = percentInvestment;
+        } else {
+            System.out.println("Coloque um valor positivo para a porcentagem de investimento");
+        }
     }
     public void setPercentReserve(float percentReserve) {
-        this.percentReserve = percentReserve;
+        if (percentReserve >= 0.0F) {
+            this.percentReserve = percentReserve;
+        } else {
+            System.out.println("Coloque um valor positivo para a porcentagem de reserva de emergência");
+        }
     }
 
     public void calculateDistribution(float salary) {
@@ -35,5 +47,4 @@ public class BasicPlanning {
         System.out.printf("Investimentos: R$%.2f\n", investiment);
         System.out.printf("Desejos: R$%.2f\n", expense);
     }
-
 }

@@ -1,10 +1,8 @@
 package main;
 
+import java.util.Scanner;
 import Class.BasicPlanning;
 import Class.DebitPlanning;
-
-import java.util.Scanner;
-
 
 public class Main {
     public static void main(String[] args) {
@@ -13,32 +11,44 @@ public class Main {
         System.out.println("==========MENU======== ");
         System.out.println("1 - Basic Planning");
         System.out.println("2 - Debit Planning");
-        System.out.print("Escolha: ");
-        int esc = input.nextInt();
 
-        try {
-            if(esc == 1) {
-                BasicPlanning planning = new BasicPlanning();
+        while (true) {
+            System.out.print("Escolha: ");
+            int escolha = input.nextInt();
 
-                planning.setPercentReserve(0.20F);
-                planning.setPercentInvestment(0.30F);
-                planning.setPercentExpenses(0.50F);
+            switch (escolha) {
+                case 1: realizarPlanejamentoBasico();
+                case 2: realizarPlanejamentoDebito(input);
+                default:
+                    System.out.println("Opção inválida. Por favor, escolha novamente.");
 
-                planning.calculateDistribution(864.64F);
-            } else if (esc == 2) {
-                DebitPlanning planning = new DebitPlanning();
-
-                planning.setPercentReserve(0.20F);
-                planning.setPercentInvestment(0.30F);
-                planning.setPercentExpenses(0.50F);
-
-                System.out.print("Valor da dívida: R$");
-                float debit = input.nextFloat();
-
-                planning.calculateDistribution(864.64F, debit);
             }
-        } catch (Exception e) {
-            System.out.println("Não foi possível completar a operação");
         }
+    }
+
+    private static void realizarPlanejamentoBasico() {
+        BasicPlanning planning = new BasicPlanning();
+        configurarPlano(planning);
+        planning.calculateDistribution(864.64F);
+    }
+
+    private static void realizarPlanejamentoDebito(Scanner input) {
+        DebitPlanning planning = new DebitPlanning();
+        configurarPlano(planning);
+        System.out.print("Valor da dívida: R$");
+        float debit = input.nextFloat();
+        planning.calculateDistribution(864.64F, debit);
+    }
+
+    private static void configurarPlano(BasicPlanning planning) {
+        planning.setPercentReserve(0.20F);
+        planning.setPercentInvestment(0.30F);
+        planning.setPercentExpenses(0.50F);
+    }
+
+    private static void configurarPlano(DebitPlanning planning) {
+        planning.setPercentReserve(0.20F);
+        planning.setPercentInvestment(0.30F);
+        planning.setPercentExpenses(0.50F);
     }
 }
